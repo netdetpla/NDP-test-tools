@@ -8,7 +8,7 @@ def server():
     s.listen(1)
     while True:
         client_sock, client_addr = s.accept()
-        recv_json = ''
+        recv_json = b''
         while True:
             buf = client_sock.recv(1024)
             if buf:
@@ -16,7 +16,7 @@ def server():
             else:
                 break
         client_sock.close()
-        print('receive json: ' + recv_json)
+        print('receive json: ' + recv_json.decode())
 
 
 if __name__ == '__main__':
